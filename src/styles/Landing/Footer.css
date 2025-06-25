@@ -1,0 +1,232 @@
+:root {
+  --footer-bg-light: #0f0f0f;
+  --footer-bg-dark: #0f0f0f;
+  --footer-text: #f0f0f0;
+  --footer-text-dark: #f0f0f0;
+  --footer-muted: #999;
+  --lime: #d4ff6f;
+}
+
+.footer {
+  font-family: 'Jost', sans-serif;
+  padding: 4rem 2rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.footer.light-mode {
+  background-color: var(--footer-bg-light);
+  color: var(--footer-text);
+}
+
+.footer.dark-mode {
+  background-color: var(--footer-bg-dark);
+  color: var(--footer-text-dark);
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-logo {
+  width: 32px;
+  height: 32px;
+}
+
+.footer-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  background: linear-gradient(90deg, #d4ff6f, #baff39);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+}
+
+.footer-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #a3e635, #65a30d);
+  transition: width 0.35s ease-in-out;
+}
+
+.footer-heading:hover::after {
+  width: 60px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+.footer-links li:hover {
+  margin-bottom: 0.5rem;
+  transform: translateY(-1px);
+}
+
+.footer-links a {
+  color: inherit;
+  font-size: 0.9rem;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--lime);
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legal-link {
+  font-size: 0.8rem;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: color 0.3s ease;
+}
+
+.legal-link:hover {
+  color: var(--lime);
+  opacity: 1;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  font-size: 1rem;
+  color: inherit;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: rgba(200, 255, 100, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: rgba(200, 255, 100, 0.2);
+  color: var(--lime);
+  transform: translateY(-3px);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  text-align: center;
+  opacity: 0.7;
+  width: 100%;
+}
+
+.heart {
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+.confetti-popup {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--footer-bg-light);
+  color: var(--footer-text);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  animation: slideUp 0.4s ease, fadeOut 2.5s ease 0.5s forwards;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.dark-mode .confetti-popup {
+  background: var(--footer-bg-dark);
+  color: var(--lime);
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to   { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translate(-50%, -50%); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-copy {
+    text-align: left;
+    margin-top: 1rem;
+  }
+}

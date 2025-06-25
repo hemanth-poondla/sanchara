@@ -1,0 +1,17 @@
+{
+  "light": {
+    "--bg-color": "#f9f9f9",
+    "--bg-color-secondary": "#f9f9f6",
+    "--text-color": "#000",
+    "--card-bg": "#ffffff",
+    "--card-shadow": "rgba(0, 0, 0, 0.04)",
+    "--desc-color": "#666"
+  },
+  "dark": {
+    "--bg-color": "#0f0f0f",
+    "--text-color": "#f2f2f2",
+    "--card-bg": "#1c1c1c",
+    "--card-shadow": "rgba(255, 255, 255, 0.05)",
+    "--desc-color": "#aaa"
+  }
+}
