@@ -4,14 +4,14 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC4MbH_gbvIhqZ9DSNWkcmRGFg1jDEfVzY",
-    authDomain: "tripwizard-client.firebaseapp.com",
-    projectId: "tripwizard-client",
-    storageBucket: "tripwizard-client.firebasestorage.app",
-    messagingSenderId: "476766368457",
-    appId: "1:476766368457:web:b82e713a80526d12fb9318",
-    measurementId: "G-Z9YLMV8RJB"
-  };
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId:  import.meta.env.VITE_FIREBASE_MEASURE_ID
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
