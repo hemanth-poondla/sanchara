@@ -18,7 +18,7 @@ export default function App() {
           path="/landing"
           element={
             <ProtectedRoute>
-              <GroupChat />
+              <LandingPage />
             </ProtectedRoute>
           }
         />
