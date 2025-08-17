@@ -1,0 +1,188 @@
+/* DayItinerary.css */
+
+.day-itinerary {
+  background: var(--card-bg);
+  color: var(--primary-text);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 3rem;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.day-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.weather .temp {
+  font-weight: bold;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+.weather .note {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+}
+
+.highlights {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--secondary-text);
+}
+
+.activities h3,
+.expenses h3,
+.blog-notes h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--primary-text);
+}
+
+.activities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 10px;
+  background: var(--bg-color);
+}
+
+.activity-item .time {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.activity-item .desc {
+  font-weight: 500;
+}
+
+.activity-item .icon,
+.activity-item .transport {
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+}
+
+.expense-log {
+  background: var(--bg-color);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+}
+
+.toggle-expense {
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.expense-form input {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.expense-form button {
+  align-self: start;
+  padding: 0.5rem 1rem;
+  background: var(--accent-color);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.blog-notes textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.blog-notes input[type="file"] {
+  margin-bottom: 1rem;
+}
+
+.blog-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.photo-entry img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  height: 120px;
+}
+
+.photo-entry input[type="text"] {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.blog-notes button {
+  padding: 0.6rem 1rem;
+  background: var(--accent-color);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .activity-item {
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .activity-item .icon,
+  .activity-item .transport {
+    grid-column: span 2;
+  }
+}

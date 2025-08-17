@@ -126,7 +126,7 @@ body {
   cursor: pointer;
 }
 
-.btn-primary {
+.btn-primary1 {
   background-color: var(--accent-primary);
   color: white;
   padding: 10px 20px;
@@ -136,7 +136,7 @@ body {
   border: none;
 }
 
-.btn-primary:hover {
+.btn-primary1:hover {
   background-color: var(--accent-hover);
 }
 

@@ -14,23 +14,8 @@ function App() {
   }
 }, []);
 
-const toggleTheme = () => {
-  const newDarkMode = !darkMode;
-  setDarkMode(newDarkMode);
-  document.body.classList.toggle('dark-theme'); // ✅ fix here
-  localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
-};
-
   return (
     <div className="min-h-screen px-6 py-8 bg-gray-50 dark:bg-gray-900 theme-transition">
-      <div className="flex justify-end mb-4">
-        <button 
-          onClick={toggleTheme}
-          className="px-4 py-1 border rounded-full text-sm font-medium border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-300 dark:text-gray-200 dark:border-gray-600"
-        >
-          Toggle Theme
-        </button>
-      </div>
       <Wizard />
     </div>
   );

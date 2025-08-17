@@ -1,7 +1,11 @@
+// UploadDraft.jsx — Final Polished Version with Full Validation & Theme Support
+
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/UploadDrafts/UploadDrafts.css';
 
 const UploadDraft = () => {
+  const [fallbackText, setFallbackText] = useState('');
+  const [fallbackError, setFallbackError] = useState('');
   const [uploadedFile, setUploadedFile] = useState(null);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [hasPaid, setHasPaid] = useState(false);
@@ -10,7 +14,7 @@ const UploadDraft = () => {
   const [showFallbackForm, setShowFallbackForm] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -30,6 +34,15 @@ const UploadDraft = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      const allowedTypes = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      ];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Only PDF or Word (.doc/.docx) documents are allowed.');
+        return;
+      }
       if (file.size > 5 * 1024 * 1024) {
         alert('File size exceeds 5MB limit');
         return;
@@ -43,11 +56,7 @@ const UploadDraft = () => {
     setUploadedFile(null);
     if (!hasPaid) setSelectedPlan(null);
     setShowAnalysis(false);
-    
-    // Reset file input to allow re-uploads
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const handlePlanSelect = (plan) => {
@@ -55,11 +64,16 @@ const UploadDraft = () => {
   };
 
   const handleSubmit = () => {
-    if (!uploadedFile) return;
-    
+    if (!uploadedFile) {
+      alert('Please upload a valid itinerary document.');
+      return;
+    }
+    if (!hasPaid && !selectedPlan) {
+      alert('Please select a plan to proceed.');
+      return;
+    }
+
     setIsLoading(true);
-    
-    // Simulate processing delay
     setTimeout(() => {
       if (uploadedFile && selectedPlan && !hasPaid) {
         setHasPaid(true);
@@ -76,8 +90,6 @@ const UploadDraft = () => {
     setUploadedFile(null);
     setShowPopup(false);
     setShowAnalysis(false);
-    
-    // Reset file input
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
       fileInputRef.current.click();
@@ -90,9 +102,21 @@ const UploadDraft = () => {
   };
 
   const handleFallbackSubmit = () => {
-    setShowFallbackForm(false);
-    alert("Fallback form submitted!");
-  };
+  if (!fallbackText.trim()) {
+    setFallbackError('Please describe your trip before submitting.');
+    return;
+  }
+
+  if (fallbackText.length < 30) {
+    setFallbackError('Please provide more details (at least 30 characters).');
+    return;
+  }
+
+  setShowFallbackForm(false);
+  alert("Fallback form submitted!");
+  // You can send fallbackText to backend or show confirmation here
+};
+
 
   return (
     <div className="upload-draft-container">
@@ -157,8 +181,8 @@ const UploadDraft = () => {
                       {plan === 'basic'
                         ? 'Review only'
                         : plan === 'standard'
-                        ? 'Add places & sights'
-                        : 'Full enhancements'}
+                          ? 'Add places & sights'
+                          : 'Full enhancements'}
                     </div>
                   </div>
                 ))}
@@ -181,17 +205,12 @@ const UploadDraft = () => {
               disabled={!uploadedFile || (!hasPaid && !selectedPlan) || isLoading}
               onClick={handleSubmit}
             >
-              {isLoading ? (
-                <span className="loading-spinner"></span>
-              ) : (
-                "Submit & Generate Trip"
-              )}
+              {isLoading ? <span className="loading-spinner"></span> : 'Submit & Generate Trip'}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Popup */}
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-box">
@@ -205,16 +224,21 @@ const UploadDraft = () => {
         </div>
       )}
 
-      {/* Fallback form */}
       {showFallbackForm && (
         <div className="popup-overlay">
           <div className="popup-box">
             <h2>Manual Trip Entry</h2>
-            <textarea 
-              className="fallback-textarea"
-              placeholder="Describe your trip..." 
-              rows={5} 
+            <textarea
+              className={`fallback-textarea ${fallbackError ? 'error' : ''}`}
+              placeholder="Describe your trip (e.g. Dates, Places, Preferences)"
+              rows={5}
+              value={fallbackText}
+              onChange={(e) => {
+                setFallbackText(e.target.value);
+                if (fallbackError) setFallbackError('');
+              }}
             />
+            {fallbackError && <p className="error-text">{fallbackError}</p>}
             <div className="popup-buttons">
               <button className="popup-button" onClick={handleFallbackSubmit}>Submit</button>
             </div>

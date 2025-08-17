@@ -172,7 +172,7 @@ const ChatContainer = () => {
         
         <button 
           onClick={sendMessage}
-          className="btn btn-primary"
+          className="btn btn-primary1"
         >
           Send
         </button>

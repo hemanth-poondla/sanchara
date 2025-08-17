@@ -52,6 +52,15 @@ body {
   background-color: var(--bg);
   color: var(--text);
   transition: background 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+html, body, #root {
+  height: max-content;
+  width: 100%;
 }
 
 .upload-draft-container {
@@ -83,6 +92,7 @@ body {
 .logo-text {
   font-size: 1.5rem;
   font-weight: 600;
+  color: var(--text);
 }
 
 .theme-toggle {
@@ -107,6 +117,7 @@ body {
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-align: center;
+  color: var(--text);
 }
 
 .upload-content {
@@ -231,16 +242,18 @@ body {
   border-radius: 0.75rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: var(--text);
 }
 
 .plan-option:hover {
   background-color: var(--hover);
+  color: var(--text);
 }
 
 .plan-option.selected {
   background-color: var(--primary);
-  border: 2px solid var(--black);
-  color: var(--black);
+  border: 2px solid var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
 }
 
@@ -253,6 +266,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 0.25rem;
+  color: var(--text);
 }
 
 .plan-description {
@@ -364,6 +378,17 @@ body {
   opacity: 0.9;
 }
 
+.fallback-textarea.error {
+  border: 1px solid #ff4d4d;
+  background-color: #ffecec;
+}
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
 .fallback-textarea {
   width: 100%;
   padding: 1rem;
@@ -401,6 +426,18 @@ body {
   animation: spin 1s linear infinite;
 }
 
+html, body, #root {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body, #root {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -409,20 +446,20 @@ body {
   .upload-draft-card {
     padding: 1.5rem;
   }
-  
+
   .upload-box {
     padding: 1.5rem;
   }
-  
+
   .right-panel {
     max-width: 100%;
   }
-  
+
   .popup-buttons {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .popup-button {
     width: 100%;
   }

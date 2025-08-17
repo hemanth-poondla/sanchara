@@ -41,14 +41,8 @@ html, body, #root {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition: background-color var(--transition);
-}
-
-.auth-wrapper.light {
   background-color: var(--light-bg);
+  transition: background-color var(--transition);
 }
 
 .auth-wrapper.dark {
@@ -58,8 +52,8 @@ html, body, #root {
 .card {
   background: var(--light-card);
   color: var(--light-text);
-  padding: 40px 32px;
-  width: 480px;
+  padding: 28px 20px;
+  width: 500px;
   border-radius: 16px;
   text-align: center;
   box-shadow: 0 6px 32px rgba(0, 0, 0, 0.15);
@@ -72,13 +66,6 @@ html, body, #root {
   background: var(--dark-card);
   color: var(--dark-text);
   box-shadow: 0 0 0 1px var(--dark-border);
-}
-
-@media (min-width: 768px) {
-  .card {
-    width: 540px;
-    padding: 48px 40px;
-  }
 }
 
 .theme-toggle {
@@ -96,7 +83,7 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   gap: 8px;
 }
 
@@ -105,24 +92,22 @@ html, body, #root {
 }
 
 .logo-text {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
 }
 
-/* --- Tabs --- */
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 48px;
-  margin-bottom: 28px;
+  gap: 28px;
+  margin-bottom: 16px;
 }
 
 .tab {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
   letter-spacing: 0.2px;
 }
@@ -145,61 +130,35 @@ html, body, #root {
 }
 
 .tab.active {
-  border-bottom: 3px solid var(--light-text);
+  border-bottom: 2px solid var(--light-text);
 }
 
 .auth-wrapper.dark .tab.active {
-  border-bottom: 3px solid var(--dark-accent);
+  border-bottom: 2px solid var(--dark-accent);
 }
 
-/* --- Headings --- */
-.heading {
-  font-size: 34px;
+.heading, .subheading {
+  font-size: 24px;
   font-weight: 500;
-  margin-bottom: 0;
+  margin-bottom: 4px;
   line-height: 1.2;
 }
 
 .subheading {
-  font-size: 34px;
-  font-weight: 500;
-  margin-bottom: 32px;
-  line-height: 1.2;
+  margin-bottom: 16px;
 }
 
-/* --- Form --- */
 .form-wrapper {
-  position: relative;
-  transition: height 0.4s ease;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.form-section {
-  opacity: 0;
-  transform: translateY(20px);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
-
-.form-section.active {
-  opacity: 1;
-  transform: translateY(0);
-  position: relative;
-  pointer-events: all;
+  margin-bottom: 12px;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 16px;
+  padding: 10px;
+  margin-bottom: 12px;
   border-radius: 8px;
   border: 1px solid var(--light-button-border);
   font-size: 15px;
-  transition: all 0.2s ease;
   background: transparent;
   color: inherit;
 }
@@ -227,7 +186,6 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(212, 255, 111, 0.2);
 }
 
-/* Password Field */
 .password-input-wrapper {
   position: relative;
   display: flex;
@@ -250,18 +208,17 @@ input:focus {
   color: var(--dark-subtext);
 }
 
-/* --- Buttons --- */
 .btn-primary {
   background-color: var(--light-button-bg);
   color: var(--light-button-text);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
-  padding: 14px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
   width: 100%;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   transition: transform 0.2s ease;
 }
 
@@ -274,11 +231,10 @@ input:focus {
   color: #000;
 }
 
-/* --- Footer --- */
 .label-text {
   text-align: right;
-  font-size: 15px;
-  margin-bottom: 16px;
+  font-size: 14px;
+  margin-bottom: 10px;
   color: var(--light-subtext);
 }
 
@@ -287,7 +243,7 @@ input:focus {
 }
 
 .footer-text {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--light-subtext);
 }
 
@@ -307,40 +263,35 @@ input:focus {
   color: var(--dark-text);
 }
 
-/* --- Google Button --- */
 .google-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background: #fff;
-  color: #000;
+  background: #0f0f0f;
+  color: #fff;
   font-weight: 500;
-  border: 1px solid #bbb;
-  margin-top: -10px;
-  margin-bottom: 12px;
+  border: none;
+  margin-bottom: 16px;
   transition: background 0.2s ease, box-shadow 0.2s ease;
-  appearance: none;
-  -webkit-appearance: none;
-  outline: none;
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .google-btn:hover {
   background: #d4ff6f;
   color: #000;
-  border-color: #000;
 }
 
 .auth-wrapper.dark .google-btn {
   background: #fff;
   color: #000;
-  border: 1px solid #888;
 }
 
 .auth-wrapper.dark .google-btn:hover {
   background: #d4ff6f;
   color: #000;
-  border-color: #000;
 }
 
 .google-icon {
@@ -348,11 +299,10 @@ input:focus {
   align-items: center;
 }
 
-/* --- Input Errors --- */
 .input-error {
   font-size: 13px;
   color: #d93025;
   text-align: left;
-  margin-top: -12px;
-  margin-bottom: 10px;
+  margin-top: -10px;
+  margin-bottom: 8px;
 }

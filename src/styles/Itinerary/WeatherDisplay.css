@@ -1,0 +1,13 @@
+.weatherContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.temperature {
+  padding: 0.5rem 1rem;
+  background-color: var(--weather-bg);
+  border-radius: 20px;
+  color: var(--weather-text);
+  font-weight: bold;
+}
